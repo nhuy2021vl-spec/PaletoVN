@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paleto - Màu nước cao cấp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Top Red Bar & Navigation */
+        .top-nav {
+            background-color: #b31412;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 40px;
+            color: white;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            position: relative;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 20px;
+            padding: 5px 15px;
+            width: 240px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus-within {
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            transform: scale(1.02);
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            font-size: 13px;
+            width: 100%;
+            padding-left: 5px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 50px 40px;
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .hero-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .brand-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .parrot-icon {
+            width: 70px;
+            height: 70px;
+            animation: floatParrot 3s ease-in-out infinite;
+        }
+
+        .brand-text h1 {
+            font-size: 32px;
+            font-weight: 900;
+            color: #111;
+            line-height: 1.1;
+        }
+
+        .brand-text p {
+            font-size: 12px;
+            font-weight: 700;
+            color: #b31412;
+            letter-spacing: 1px;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        .hero-desc {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-red {
+            background-color: #b31412;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-red:hover {
+            background-color: #920f0d;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(179, 20, 18, 0.4);
+        }
+
+        .hero-right {
+            flex: 1;
+            background-color: #d9d9d9;
+            height: 350px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .hero-right:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Section Ribbon */
+        .section-ribbon {
+            background-color: #b31412;
+            color: white;
+            padding: 12px 40px;
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            margin: 20px 0;
+            animation: pulseRibbon 2s infinite;
+        }
+
+        .content-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px 40px 50px 40px;
+        }
+
+        .highlight-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        /* Best Sellers */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .product-img {
+            background-color: #d9d9d9;
+            height: 220px;
+            border-radius: 4px;
+            transition: filter 0.3s;
+        }
+
+        .product-card:hover .product-img {
+            filter: brightness(0.95);
+        }
+
+        .product-info {
+            text-align: center;
+        }
+
+        .product-name {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 5px;
+            color: #222;
+        }
+
+        .product-price {
+            font-weight: 800;
+            color: #b31412;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .btn-buy {
+            background-color: #b31412;
+            color: white;
+            border: none;
+            padding: 10px 0;
+            width: 100%;
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-buy:hover {
+            background-color: #920f0d;
+            transform: scale(1.02);
+        }
+
+        /* Palette Tabs */
+        .palette-tabs {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .tab-item {
+            font-weight: 700;
+            font-size: 15px;
+            color: #777;
+            cursor: pointer;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .tab-item.active {
+            color: #b31412;
+        }
+
+        .tab-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #b31412;
+            animation: slideInTab 0.3s ease;
+        }
+
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .palette-box {
+            background-color: #d9d9d9;
+            height: 130px;
+            border-radius: 4px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .palette-box:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        /* Creative Corner */
+        .section-title {
+            font-weight: 900;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #111;
+        }
+
+        .creative-slider {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .slider-img {
+            background-color: #d9d9d9;
+            border-radius: 4px;
+            transition: all 0.5s ease;
+        }
+
+        .slider-img.small {
+            width: 120px;
+            height: 140px;
+            opacity: 0.6;
+        }
+
+        .slider-img.medium {
+            width: 160px;
+            height: 180px;
+            opacity: 0.8;
+        }
+
+        .slider-img.large {
+            width: 220px;
+            height: 240px;
+            opacity: 1;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transform: scale(1.05);
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 50px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .dot.active {
+            background-color: #b31412;
+            transform: scale(1.3);
+        }
+
+        /* Customer Reviews */
+        .review-box {
+            background-color: #d9d9d9;
+            height: 110px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .review-box:hover {
+            transform: scale(1.01);
+        }
+
+        /* Footer Connection Banner */
+        .connect-banner {
+            background-color: #b31412;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        .connect-banner h3 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .connect-banner p {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Footer Info */
+        footer {
+            background-color: #fff;
+            padding: 50px 40px;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-info {
+            max-width: 500px;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .social-icons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-end;
+            z-index: 2;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #222;
+            text-decoration: none;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .social-item:hover {
+            transform: translateX(-5px);
+            color: #b31412;
+        }
+
+        .social-icon-circle {
+            width: 32px;
+            height: 32px;
+            background-color: #b31412;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            transition: transform 0.3s;
+        }
+
+        .social-item:hover .social-icon-circle {
+            transform: rotate(360deg);
+        }
+
+        .footer-decoration {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            gap: 5px;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .feather-wing {
+            width: 80px;
+            height: 120px;
+            background: linear-gradient(135deg, #00acc1, #ffeb3b, #b31412);
+            border-radius: 100px 0 0 0;
+            animation: waveWing 4s ease-in-out infinite alternate;
+        }
+
+        .feather-wing:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .feather-wing:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        /* Keyframes Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes floatParrot {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        @keyframes slideInTab {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes waveWing {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(5deg) scaleY(1.05); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <ul class="nav-links">
+            <li><a href="#">TRANG CHỦ</a></li>
+            <li><a href="#">SẢN PHẨM</a></li>
+            <li><a href="#">MÀU NƯỚC</a></li>
+            <li><a href="#">CẢM HỨNG</a></li>
+            <li><a href="#">LIÊN HỆ</a></li>
+        </ul>
+        <div class="search-box">
+            <span>🔍</span>
+            <input type="text" placeholder="Tìm kiếm...">
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-left">
+            <div class="brand-logo-container">
+                <!-- Giữ nguyên 100% hình vector Logo -->
+                <svg class="parrot-icon" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="#FFEB3B"/>
+                    <path d="M35 30 Q50 15 65 30 Q70 50 50 70 Q30 50 35 30 Z" fill="#E53935"/>
+                    <circle cx="55" cy="40" r="5" fill="#111"/>
+                    <path d="M65 40 Q80 45 75 55 Z" fill="#FF9800"/>
+                    <path d="M20 70 Q35 85 50 70 Q35 90 20 70 Z" fill="#00ACC1"/>
+                </svg>
+                <div class="brand-text">
+                    <h1>PALETO</h1>
+                    <p>MÀU NƯỚC CAO CẤP DÀNH CHO BẠN</p>
+                </div>
+            </div>
+            <p class="hero-desc">
+                Sáng tạo không giới hạn với màu nước Paleto.<br>
+                Sản phẩm độc quyền đạt chuẩn chất lượng artist-grade, độ bền màu cao, hạt màu siêu mịn, màu sắc tươi sáng, đáp ứng mọi yêu cầu khắt khe của họa sĩ chuyên nghiệp.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn-red">Khám phá sản phẩm</button>
+                <button class="btn-red">Mua ngay</button>
+            </div>
+        </div>
+        <div class="hero-right">
+            Hình ảnh
+        </div>
+    </div>
+
+    <!-- Điểm nổi bật -->
+    <div class="section-ribbon">ĐIỂM NỔI BẬT CỦA MÀU PALETO</div>
+    <div class="content-container" style="padding-bottom: 20px;">
+        <p class="highlight-text">
+            Màu sắc chuẩn tỷ lệ, độ bám dính tốt, khả năng loang màu tốt, không bị vón cục.<br>
+            Độ che phủ cao, dễ dàng pha trộn, độ bền màu cao theo năm tháng.<br>
+            An toàn, không độc hại. Chuẩn artist-grade cho tranh vẽ và họa sĩ chuyên nghiệp.
+        </p>
+    </div>
+
+    <!-- Sản phẩm bán chạy -->
+    <div class="section-ribbon">SẢN PHẨM BÁN CHẠY</div>
+    <div class="content-container">
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-img"></div>
+                <div class="product-info">
+                    <div class="product-name">Bộ 12 màu cơ bản</div>
+                    <div class="product-price">299.000 VNĐ</div>
+                    <button class="btn-buy">Thêm vào giỏ hàng</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img"></div>
+                <div class="product-info">
+                    <div class="product-name">Bộ 24 màu</div>
+                    <div class="product-price">499.000 VNĐ</div>
+                    <button class="btn-buy">Thêm vào giỏ hàng</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img"></div>
+                <div class="product-info">
+                    <div class="product-name">Hũ màu lẻ</div>
+                    <div class="product-price">25.000 VNĐ</div>
+                    <button class="btn-buy">Thêm vào giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bảng màu -->
+    <div class="section-ribbon">BẢNG MÀU</div>
+    <div class="content-container">
+        <div class="palette-tabs">
+            <div class="tab-item active">Nổi bật</div>
+            <div class="tab-item">Tone nóng</div>
+            <div class="tab-item">Tone lạnh</div>
+        </div>
+        <div class="palette-grid">
+            <div class="palette-box"></div>
+            <div class="palette-box"></div>
+            <div class="palette-box"></div>
+            <div class="palette-box"></div>
+            <div class="palette-box"></div>
+            <div class="palette-box"></div>
+            <div class="palette-box"></div>
+            <div class="palette-box"></div>
+        </div>
+    </div>
+
+    <!-- Cảm hứng & Cộng đồng -->
+    <div class="section-ribbon">CẢM HỨNG & CỘNG ĐỒNG</div>
+    <div class="content-container" style="padding-bottom: 10px;">
+        <div class="section-title">GÓC SÁNG TẠO</div>
+        <div class="creative-slider">
+            <div class="slider-img small"></div>
+            <div class="slider-img medium"></div>
+            <div class="slider-img large"></div>
+            <div class="slider-img medium"></div>
+            <div class="slider-img small"></div>
+        </div>
+        <div class="slider-dots">
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+        </div>
+
+        <div class="section-title">ĐÁNH GIÁ TỪ KHÁCH HÀNG</div>
+        <div class="review-box">
+            Khung đánh giá sản phẩm từ khách hàng
+        </div>
+    </div>
+
+    <!-- Kết nối với Paleto -->
+    <div class="connect-banner">
+        <h3>KẾT NỐI VỚI PALETO</h3>
+        <p>Bạn có thắc mắc về sản phẩm, cần tư vấn chọn màu hay muốn hợp tác,<br>hãy liên hệ với chúng tôi ngay!</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-info">
+            Cửa hàng:<br>
+            Địa chỉ: 01 Võ Văn Ngân, Phường Linh Chiểu, TP. Thủ Đức, Thành phố Hồ Chí Minh<br>
+            Thời gian mở cửa: 8:00 - 18:00<br>
+            Kênh hỗ trợ:<br>
+            Hotline: 0123456789<br>
+            Email: paleto.vn@gmail.com<br>
+            Fanpage: facebook.com/paleto.official
+        </div>
+        <div class="social-icons">
+            <a href="#" class="social-item">
+                @paleto.official
+                <div class="social-icon-circle">f</div>
+            </a>
+            <a href="#" class="social-item">
+                @paleto.official
+                <div class="social-icon-circle">♪</div>
+            </a>
+            <a href="#" class="social-item">
+                @paleto.official
+                <div class="social-icon-circle">📷</div>
+            </a>
+        </div>
+        <div class="footer-decoration">
+            <div class="feather-wing"></div>
+            <div class="feather-wing"></div>
+            <div class="feather-wing"></div>
+        </div>
+    </footer>
+
+</body>
+</html>
