@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PALETO | Màu Nước Cao Cấp Dành Cho Bạn</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Montserrat & Be Vietnam Pro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paleto: {
+                            red: '#C8232A',
+                            darkRed: '#A6181E',
+                            lightRed: '#E53935',
+                            grayPlaceholder: '#D6D6D6',
+                            textDark: '#111111'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Exact gray image placeholder styling from wireframe */
+        .img-placeholder {
+            background-color: #D6D6D6;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .img-placeholder:hover {
+            background-color: #CCCCCC;
+        }
+
+        .img-placeholder::after {
+            content: 'Hình ảnh';
+            font-size: 12px;
+            color: #888888;
+            font-weight: 500;
+        }
+
+        .img-placeholder.has-image::after {
+            display: none;
+        }
+
+        /* Full-width red section ribbon bar */
+        .red-ribbon {
+            background-color: #C8232A;
+            color: #FFFFFF;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C8232A;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-paleto-textDark antialiased min-h-screen flex flex-col justify-between selection:bg-paleto-red selection:text-white">
+
+    <!-- Hidden file input for uploading images to placeholders -->
+    <input type="file" id="global-image-uploader" accept="image/*" class="hidden">
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="bg-paleto-red text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-12 sm:h-14 flex items-center justify-between">
+            <!-- Left Links -->
+            <nav class="flex items-center space-x-4 sm:space-x-8 text-xs sm:text-sm font-bold tracking-wider">
+                <a href="#trang-chu" class="hover:text-amber-200 transition-colors py-1">TRANG CHỦ</a>
+                <a href="#san-pham" class="hover:text-amber-200 transition-colors py-1">SẢN PHẨM</a>
+                <a href="#bang-mau" class="hover:text-amber-200 transition-colors py-1">BẢNG MÀU</a>
+                <a href="#cam-huong" class="hover:text-amber-200 transition-colors py-1">CẢM HƯỚNG</a>
+                <a href="#lien-he" class="hover:text-amber-200 transition-colors py-1">LIÊN HỆ</a>
+            </nav>
+
+            <!-- Search Bar -->
+            <div class="relative w-36 sm:w-64 my-1">
+                <input type="text" id="search-input" placeholder="Tìm kiếm..." class="w-full pl-8 pr-3 py-1 rounded-full text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-amber-300 shadow-inner placeholder-gray-400">
+                <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-2 text-gray-400 text-xs"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10 sm:space-y-12 w-full flex-grow">
+
+        <!-- HERO SECTION -->
+        <section id="trang-chu" class="grid lg:grid-cols-12 gap-8 items-center pt-2">
+            <!-- Hero Left Content -->
+            <div class="lg:col-span-5 space-y-6">
+                <!-- PALETO Vector Logo exact match from wireframe -->
+                <div class="flex items-start gap-4">
+                    <svg class="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Parrot Head/Beak -->
+                        <path d="M60 10 C35 10, 15 28, 15 55 C15 75, 25 90, 42 102 C30 92, 22 75, 24 58 C28 38, 48 24, 68 24 Z" fill="#C8232A"/>
+                        <path d="M68 24 C82 24, 98 32, 98 48 C98 60, 88 68, 76 68 C64 68, 58 52, 58 42 Z" fill="#FACC15"/>
+                        <path d="M58 42 C48 52, 35 60, 24 58 C22 75, 30 92, 42 102 C58 86, 72 68, 82 50 Z" fill="#10B981"/>
+                        <path d="M76 68 C88 68, 102 78, 102 90 C102 102, 90 108, 74 108 C60 108, 50 102, 42 102 C58 112, 78 115, 96 104 C106 96, 108 82, 98 68 Z" fill="#0284C7"/>
+                        <!-- Eye -->
+                        <circle cx="50" cy="32" r="4" fill="#111111"/>
+                    </svg>
+                    <div class="pt-1">
+                        <h1 class="font-display font-black text-4xl sm:text-5xl tracking-tight text-slate-900 leading-none">PALETO</h1>
+                        <p class="text-[11px] sm:text-[13px] text-gray-600 font-bold tracking-tight uppercase mt-1">MÀU NƯỚC CAO CẤP DÀNH CHO BẠN</p>
+                    </div>
+                </div>
+
+                <!-- Headline & Copywriting -->
+                <div class="space-y-3">
+                    <h2 class="font-extrabold text-xl sm:text-2xl text-slate-900 leading-snug">
+                        Sáng tạo không giới hạn với màu nước Paleto
+                    </h2>
+                    <p class="text-xs sm:text-sm text-gray-700 leading-relaxed font-normal">
+                        Màu nước Paleto chất lượng cao, độ phủ tốt, màu sắc tươi sáng giúp bạn tự do sáng tạo những tác phẩm tuyệt vời.
+                    </p>
+                </div>
+
+                <!-- Red Action Buttons -->
+                <div class="flex flex-wrap items-center gap-4 pt-1">
+                    <a href="#san-pham" class="px-7 py-2.5 rounded-full bg-paleto-red hover:bg-paleto-darkRed text-white font-bold text-xs sm:text-sm shadow-sm transition-all text-center">
+                        Khám phá sản phẩm
+                    </a>
+                    <a href="#san-pham" class="px-7 py-2.5 rounded-full bg-paleto-red hover:bg-paleto-darkRed text-white font-bold text-xs sm:text-sm shadow-sm transition-all text-center">
+                        Mua ngay
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Right Placeholder Image -->
+            <div class="lg:col-span-7">
+                <div class="img-placeholder w-full h-64 sm:h-80 md:h-[380px]" onclick="triggerUpload(this)" title="Bấm để tải ảnh lên"></div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: ĐIỂM NỔI BẬT CỦA MÀU PALETO -->
+        <section class="space-y-4">
+            <div class="red-ribbon py-2.5 px-4 text-center text-sm sm:text-base rounded-sm">
+                ĐIỂM NỔI BẬT CỦA MÀU PALETO
+            </div>
+            <p class="text-xs sm:text-sm text-gray-800 leading-relaxed text-left sm:text-justify max-w-6xl mx-auto px-1">
+                Màu sắc chuẩn và tươi sáng. Khả năng pha trộn tốt, không bị đục màu. Độ bền màu cao theo thời gian, độ che phủ rộng giúp tiết kiệm hơn. An toàn cho người sử dụng, truyền cảm hứng sáng tạo thành văn hóa nghệ thuật chuyên nghiệp.
+            </p>
+        </section>
+
+        <!-- SECTION 2: SẢN PHẨM BÁN CHẠY -->
+        <section id="san-pham" class="space-y-5">
+            <h2 class="font-display font-extrabold text-base sm:text-lg text-slate-900 uppercase">
+                SẢN PHẨM BÁN CHẠY
+            </h2>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg p-2 text-center space-y-3 flex flex-col justify-between">
+                    <div class="img-placeholder w-full h-48 sm:h-56" onclick="triggerUpload(this)" title="Bấm để tải ảnh lên"></div>
+                    <div class="space-y-1">
+                        <h3 class="font-bold text-sm text-slate-900">Bộ 12 màu cơ bản</h3>
+                        <p class="text-paleto-red font-extrabold text-sm sm:text-base">299.000 VNĐ</p>
+                    </div>
+                    <button onclick="addToCart('Bộ 12 màu cơ bản')" class="w-full py-2 rounded-full bg-paleto-red hover:bg-paleto-darkRed text-white text-xs font-bold transition-colors shadow-sm">
+                        Thêm vào giỏ hàng
+                    </button>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg p-2 text-center space-y-3 flex flex-col justify-between">
+                    <div class="img-placeholder w-full h-48 sm:h-56" onclick="triggerUpload(this)" title="Bấm để tải ảnh lên"></div>
+                    <div class="space-y-1">
+                        <h3 class="font-bold text-sm text-slate-900">Bộ 24 màu</h3>
+                        <p class="text-paleto-red font-extrabold text-sm sm:text-base">499.000 VNĐ</p>
+                    </div>
+                    <button onclick="addToCart('Bộ 24 màu')" class="w-full py-2 rounded-full bg-paleto-red hover:bg-paleto-darkRed text-white text-xs font-bold transition-colors shadow-sm">
+                        Thêm vào giỏ hàng
+                    </button>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg p-2 text-center space-y-3 flex flex-col justify-between">
+                    <div class="img-placeholder w-full h-48 sm:h-56" onclick="triggerUpload(this)" title="Bấm để tải ảnh lên"></div>
+                    <div class="space-y-1">
+                        <h3 class="font-bold text-sm text-slate-900">Hũ màu lẻ</h3>
+                        <p class="text-paleto-red font-extrabold text-sm sm:text-base">25.000 VNĐ</p>
+                    </div>
+                    <button onclick="addToCart('Hũ màu lẻ')" class="w-full py-2 rounded-full bg-paleto-red hover:bg-paleto-darkRed text-white text-xs font-bold transition-colors shadow-sm">
+                        Thêm vào giỏ hàng
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: BẢNG MÀU -->
+        <section id="bang-mau" class="space-y-5">
+            <div class="red-ribbon py-2.5 px-4 text-center text-sm sm:text-base rounded-sm">
+                BẢNG MÀU
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex items-center space-x-8 text-xs sm:text-sm font-bold border-b border-gray-200 pb-2">
+                <button onclick="switchTab('noi-bat')" id="tab-noi-bat" class="tab-item text-paleto-red border-b-2 border-paleto-red pb-1 focus:outline-none">
+                    Nổi bật
+                </button>
+                <button onclick="switchTab('tone-nong')" id="tab-tone-nong" class="tab-item text-gray-600 hover:text-slate-900 pb-1 focus:outline-none">
+                    Tone nóng
+                </button>
+                <button onclick="switchTab('tone-lanh')" id="tab-tone-lanh" class="tab-item text-gray-600 hover:text-slate-900 pb-1 focus:outline-none">
+                    Tone lạnh
+                </button>
+            </div>
+
+            <!-- 2 Rows x 4 Columns = 8 Color Swatch Image Blocks -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div class="img-placeholder h-28 sm:h-36" onclick="triggerUpload(this)" title="Bấm để tải ảnh lên"></div>
+                <div class="img-placeholder h-28 sm:h-36" onclick="triggerUpload(this)" title="Bấm để tải ảnh lên"></div>
+                <div class="img-placeholder h-28 sm:h-36" onclick="triggerUpload(this)" title="Bấm để tải ảnh lên"></div>
+                <div class="img-placeholder h-28 sm:h-36" onclick="triggerUpload(this)" title="Bấm để tải ảnh lên"></div>
+                <div class="img-placeholder h-28 sm:h-36" onclick="triggerUpload(this)" title="Bấm để tải ảnh lên"></div>
+                <div class="img-placeholder h-28 sm:h-36" onclick="triggerUpload(this)" title="Bấm để tải ảnh lên"></div>
+                <div class="img-placeholder h-28 sm:h-36" onclick="triggerUpload(this)" title="Bấm để tải ảnh lên"></div>
+                <div class="img-placeholder h-28 sm:h-36" onclick="triggerUpload(this)" title="Bấm để tải ảnh lên"></div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: CẢM HƯỚNG & CỘNG ĐỒNG -->
+        <section id="cam-huong" class="space-y-8">
+            <div class="red-ribbon py-2.5 px-4 text-center text-sm sm:text-base rounded-sm">
+                CẢM HƯỚNG & CỘNG ĐỒNG
+            </div>
+
+            <!-- GÓC SÁNG TẠO CAROUSEL -->
+            <div class="space-y-4">
+                <h3 class="font-display font-extrabold text-base text-slate-900 uppercase">GÓC SÁNG TẠO</h3>
+                
+                <!-- 5 Box Carousel (Center box dominant) -->
+                <div class="grid grid-cols-5 gap-2 sm:gap-4 items-center">
+                    <div class="img-placeholder h-20 sm:h-32 opacity-80" onclick="triggerUpload(this)"></div>
+                    <div class="img-placeholder h-28 sm:h-40 opacity-90" onclick="triggerUpload(this)"></div>
+                    <!-- Center Showcase Image -->
+                    <div class="img-placeholder h-36 sm:h-52 shadow-md ring-2 ring-paleto-red/40" onclick="triggerUpload(this)"></div>
+                    <div class="img-placeholder h-28 sm:h-40 opacity-90" onclick="triggerUpload(this)"></div>
+                    <div class="img-placeholder h-20 sm:h-32 opacity-80" onclick="triggerUpload(this)"></div>
+                </div>
+
+                <!-- Controls `< ( • • • ) >` -->
+                <div class="flex justify-center items-center gap-3 text-paleto-red text-sm font-bold pt-1">
+                    <button class="hover:scale-125 transition-transform"><i class="fa-solid fa-chevron-left"></i></button>
+                    <span class="inline-block w-2 h-2 rounded-full bg-paleto-red"></span>
+                    <span class="inline-block w-2 h-2 rounded-full bg-gray-300"></span>
+                    <span class="inline-block w-2 h-2 rounded-full bg-gray-300"></span>
+                    <button class="hover:scale-125 transition-transform"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <!-- ĐÁNH GIÁ TỪ KHÁCH HÀNG -->
+            <div class="space-y-3">
+                <h3 class="font-display font-extrabold text-base text-slate-900 uppercase">ĐÁNH GIÁ TỪ KHÁCH HÀNG</h3>
+                <!-- Wide rounded testimonial grey block -->
+                <div class="img-placeholder w-full h-32 sm:h-40 rounded-2xl" onclick="triggerUpload(this)"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SECTION 5: KẾT NỐI VỚI PALETO & FOOTER -->
+    <footer id="lien-he" class="mt-12 relative overflow-hidden bg-white">
+        <!-- Call To Action Banner -->
+        <div class="bg-paleto-red text-white py-6 px-4 text-center space-y-1">
+            <h3 class="font-display font-black text-lg sm:text-xl uppercase tracking-wider">KẾT NỐI VỚI PALETO</h3>
+            <p class="text-xs sm:text-sm font-medium opacity-95">
+                Bạn có thắc mắc về sản phẩm, cần tư vấn chọn bộ màu hay muốn hợp tác, hãy liên hệ tại đây
+            </p>
+        </div>
+
+        <!-- Footer Body Details -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                
+                <!-- Left Column: Store Details -->
+                <div class="space-y-2.5 text-xs sm:text-sm text-slate-800">
+                    <p class="font-bold text-sm sm:text-base text-slate-900">Cửa hàng</p>
+                    <p><span class="font-bold">Địa chỉ:</span> 01 Võ Văn Ngân, Phường Linh Chiểu, TP. Thủ Đức, Thành phố Hồ Chí Minh</p>
+                    <p><span class="font-bold">Thời gian mở cửa:</span> 8:00 - 18:00</p>
+                    <p class="pt-1"><span class="font-bold">Kênh hỗ trợ:</span></p>
+                    <p><span class="font-bold">Hotline:</span> 0123456789</p>
+                    <p><span class="font-bold">Email:</span> paleto.vn@gmail.com</p>
+                    <p><span class="font-bold">Hợp tác doanh nghiệp, sự kiện:</span> 0987654321</p>
+                </div>
+
+                <!-- Right Column: Social Media Connections -->
+                <div class="space-y-4 md:text-right flex flex-col md:items-end justify-center h-full">
+                    <a href="https://facebook.com" target="_blank" class="inline-flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-900 hover:text-paleto-red transition-colors">
+                        <i class="fa-brands fa-facebook text-2xl text-blue-600"></i>
+                        <span>@paleto.official</span>
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" class="inline-flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-900 hover:text-paleto-red transition-colors">
+                        <i class="fa-brands fa-tiktok text-2xl text-black"></i>
+                        <span>@paleto.official</span>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="inline-flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-900 hover:text-paleto-red transition-colors">
+                        <i class="fa-brands fa-instagram text-2xl text-pink-600"></i>
+                        <span>@paleto.official</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Organic Color Accents on Bottom Right Corner -->
+        <div class="pointer-events-none absolute bottom-0 right-0 w-48 sm:w-80 h-32 opacity-80 z-0">
+            <svg viewBox="0 0 300 150" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                <!-- Colorful Parrot Wing Accents -->
+                <path d="M100 150 C180 120, 240 70, 300 0 L300 150 Z" fill="#38BDF8"/>
+                <path d="M140 150 C200 130, 260 90, 300 30 L300 150 Z" fill="#FB7185"/>
+                <path d="M190 150 C240 140, 280 110, 300 70 L300 150 Z" fill="#FACC15"/>
+            </svg>
+        </div>
+    </footer>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white text-xs px-4 py-3 rounded-lg shadow-xl hidden transition-all duration-300 z-50">
+        Đã thêm sản phẩm vào giỏ hàng!
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        let currentPlaceholder = null;
+
+        // Image upload trigger for gray placeholders
+        function triggerUpload(element) {
+            currentPlaceholder = element;
+            document.getElementById('global-image-uploader').click();
+        }
+
+        document.getElementById('global-image-uploader').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file && currentPlaceholder) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    currentPlaceholder.style.backgroundImage = `url('${evt.target.result}')`;
+                    currentPlaceholder.style.backgroundSize = 'cover';
+                    currentPlaceholder.style.backgroundPosition = 'center';
+                    currentPlaceholder.classList.add('has-image');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-item').forEach(tab => {
+                tab.classList.remove('text-paleto-red', 'border-b-2', 'border-paleto-red');
+                tab.classList.add('text-gray-600');
+            });
+
+            const selectedTab = document.getElementById('tab-' + tabId);
+            if (selectedTab) {
+                selectedTab.classList.remove('text-gray-600');
+                selectedTab.classList.add('text-paleto-red', 'border-b-2', 'border-paleto-red');
+            }
+        }
+
+        // Cart Notification
+        function addToCart(product) {
+            const toast = document.getElementById('toast');
+            toast.innerText = 'Đã thêm "' + product + '" vào giỏ hàng!';
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
